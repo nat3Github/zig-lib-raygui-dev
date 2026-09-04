@@ -1,0 +1,19 @@
+.{
+    .name = .raygui,
+    .version = "4.0.0",
+    .minimum_zig_version = "0.16.0",
+
+    .fingerprint = 0x6ef335682ef70c01,
+
+    .dependencies = .{},
+
+    // Only src/ (raygui.h) is consumed by downstream builds (raylib's
+    // C backend includes it directly; raylib_zig vendors its own copy).
+    // Everything else (examples/styles/docs/icons/images/logo/projects)
+    // stays in the repo but is excluded from what `zig fetch` materializes
+    // and hashes, keeping the local package cache lean.
+    .paths = .{
+        "src",
+        "LICENSE",
+    },
+}
